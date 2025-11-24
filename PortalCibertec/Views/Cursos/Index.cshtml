@@ -1,0 +1,37 @@
+﻿@model List<PortalCibertec.Models.CursoCorto>
+
+@{
+    ViewBag.Title = "Cursos Cortos - Cibertec";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 20px;">
+    <h2>@ViewBag.Titulo</h2>
+    <p class="lead">Especialízate rápidamente en las áreas más demandadas</p>
+
+    <hr />
+
+    <div class="row">
+        @foreach (var curso in Model)
+        {
+            <div class="col-md-6" style="margin-bottom: 20px;">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@curso.Nombre</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Duración:</strong> @curso.Duracion</p>
+                        <p><strong>Instructor:</strong> @curso.Instructor</p>
+                        <p><strong>Modalidad:</strong> @curso.Modalidad</p>
+                        <p>@curso.Descripcion</p>
+                        <h4 class="text-danger">S/. @curso.Precio</h4>
+                        <p><span class="label label-success">@curso.CuposDisponibles cupos disponibles</span></p>
+                        <a href="@Url.Action("Index", "Contacto")" class="btn btn-danger">
+                            Inscribirse
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,20 @@
+# Visual Studio file
+.vs/
+*.sln.ide
+*.suo
+*.user
+*.bak
+*.ncb
+*.pdb
+*.obj
+*.~
+
+#Buil/Output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# Packages
+*.nupkg
+

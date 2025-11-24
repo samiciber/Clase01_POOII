@@ -1,0 +1,35 @@
+﻿@model List<PortalCibertec.Models.Carrera>
+@{
+    ViewBag.Title = "Carreras - Cibertec";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 20px;">
+    <h2>Carreras Técnicas</h2>
+    <p class="lead">Encuentra la carrera perfecta para tu futuro profesional</p>
+
+    <hr />
+
+    <div class="row">
+        @foreach (var carrera in Model)
+        {
+            <div class="col-md-6" style="margin-bottom: 20px;">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">@carrera.Nombre</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>Duración:</strong> @carrera.Duracion</p>
+                        <p><strong>Modalidad:</strong> @carrera.Modalidad</p>
+                        <p>@carrera.Descripcion</p>
+                        <p><strong>Precio:</strong> <span class="text-danger">S/. @carrera.PrecioMensual / mes</span></p>
+                        <p><span class="label label-success">@carrera.VacantesDisponibles vacantes disponibles</span></p>
+                        <a href="@Url.Action("Detalle", new { id = carrera.Id })" class="btn btn-danger">
+                            Ver detalles completos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model List<PortalCibertec.Models.Carrera>
+@{
+    ViewBag.Title = "Inicio - Cibertec";
+}
+
+<!-- Hero Section -->
+<div class="jumbotron" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white;">
+    <div class="container text-center">
+        <h1 class="display-3">@ViewBag.TituloInstituto</h1>
+        <p class="lead">@ViewBag.Mensaje</p>
+        <p>
+            <a class="btn btn-light btn-lg" href="@Url.Action("Index", "Carreras")" role="button">
+                Ver Todas las Carreras &raquo;
+            </a>
+        </p>
+    </div>
+</div>
+
+<!-- Carreras Destacadas -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Nuestras Carreras Técnicas</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var carrera in Model)
+        {
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>@carrera.Nombre</h3>
+                        <p><strong>Duración:</strong> @carrera.Duracion</p>
+                        <p><strong>Modalidad:</strong> @carrera.Modalidad</p>
+                        <p>@carrera.Descripcion</p>
+                        <p class="text-danger"><strong>S/. @carrera.PrecioMensual / mes</strong></p>
+                        <p>
+                            <a class="btn btn-danger" href="@Url.Action("Detalle", "Carreras", new { id = carrera.Id })">
+                                Ver detalles &raquo;
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h3>Educación de Calidad</h3>
+            <p>Programas actualizados con tecnología de vanguardia</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Docentes Especializados</h3>
+            <p>Profesionales con experiencia en el sector</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Certificación Oficial</h3>
+            <p>Títulos reconocidos por el Ministerio de Educación</p>
+        </div>
+    </div>
+</div>

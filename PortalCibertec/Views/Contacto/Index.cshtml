@@ -1,0 +1,68 @@
+﻿@model PortalCibertec.Models.SolicitudInformacion
+
+@{
+    ViewBag.Title = "Contacto - Cibertec";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Solicita Información</h2>
+            <p>@ViewBag.Mensaje</p>
+
+            @using (Html.BeginForm("Index", "Contacto", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NombreCompleto, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.NombreCompleto, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NombreCompleto, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Telefono, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Telefono, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Telefono, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CarreraInteres, new { @class = "control-label" })
+                    @Html.DropDownListFor(m => m.CarreraInteres,
+                             new SelectList(new[] { "Computación e Informática", "Marketing Digital", "Administración" }),
+                             "-- Seleccione una carrera --",
+                             new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CarreraInteres, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Comentarios, new { @class = "control-label" })
+                    @Html.TextAreaFor(m => m.Comentarios, new { @class = "form-control", rows = 4 })
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-lg">Enviar Solicitud</button>
+            }
+        </div>
+
+        <div class="col-md-4">
+            <div class="well">
+                <h3>Contacto</h3>
+                <p><strong>Teléfono:</strong> 633-5555</p>
+                <p><strong>Email:</strong> informes@cibertec.edu.pe</p>
+                <p><strong>Dirección:</strong> Av. Uruguay 514, Lima</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
